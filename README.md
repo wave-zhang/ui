@@ -1,0 +1,2 @@
+# UI
+这是一个基于MvvM结构的基础框架,使用了DataBinding,LiveData,Navigation为技术点. 简化Fragment,Diaolog等控件构建方式,更友好愉快的使用MvvM模式,由于核心Navigation提倡单个Activity此框架未对Activity进行老封装
