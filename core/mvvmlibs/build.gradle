@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.library'
+    //
+    id 'maven-publish'
 }
+// wave-zhang 改成你的GitHub账户名
+group = 'com.github.wave-zhang'
 
 android {
     compileSdkVersion 30
@@ -44,4 +48,19 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     // 日志输出工具
     implementation 'com.orhanobut:logger:2.2.0'
+
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.wave-zhang'
+                artifactId = 'ui'
+                version = '1.0.4'
+            }
+        }
+    }
 }
