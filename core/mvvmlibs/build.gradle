@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.library'
-    //
     id 'maven-publish'
 }
 // wave-zhang 改成你的GitHub账户名
@@ -59,7 +58,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.wave-zhang'
                 artifactId = 'ui'
-                version = '1.0.4'
+                version = '1.0.5'
             }
         }
     }

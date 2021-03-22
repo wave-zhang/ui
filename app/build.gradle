@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    //id 'com.github.dcendents.android-maven'
 }
 
 android {
@@ -44,8 +43,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // MvvM + UI
-    //implementation 'com.github.wave-zhang:ui:v1.0.0'
-    implementation project(":core:mvvmlibs")
+    implementation 'com.github.wave-zhang:ui:v1.0.5'
+    //implementation project(":core:mvvmlibs")
 }
 
 
