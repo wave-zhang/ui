@@ -3,7 +3,8 @@ plugins {
     id 'maven-publish'
 }
 // wave-zhang 改成你的GitHub账户名
-group = 'com.github.wave-zhang'
+//group = 'com.github.wave-zhang'
+//version = '1.0.5'
 
 android {
     compileSdkVersion 30
@@ -50,16 +51,23 @@ dependencies {
 
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.wave-zhang'
-                artifactId = 'ui'
-                version = '1.0.5'
-            }
-        }
-    }
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.wave-zhang'
+//                artifactId = 'ui'
+//                version = '1.0.5'
+//            }
+//        }
+//    }
+//}
+
+ext {
+    //你的artifact_id，一般是module的名字
+    PUBLISH_ARTIFACT_ID = "ui"
 }
+
+apply from: '../publish.gradle'
