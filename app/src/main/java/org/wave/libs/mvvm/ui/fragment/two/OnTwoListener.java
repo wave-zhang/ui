@@ -40,5 +40,5 @@ import org.wave.libs.mvvm.ui.listener.OnBackListener;
  */
 public interface OnTwoListener extends OnBackListener {
 
-
+    void onNextClick();
 }

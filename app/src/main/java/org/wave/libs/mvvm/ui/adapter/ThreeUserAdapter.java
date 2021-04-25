@@ -1,4 +1,4 @@
-package org.wave.libs.mvvm.ui.fragment.two;/*
+package org.wave.libs.mvvm.ui.adapter;/*
  * Copyright (c) 2021, zhanglang0739@gmail.com All Rights Reserved.
  * #                                                   #
  * #                       _oo0oo_                     #
@@ -25,45 +25,43 @@ package org.wave.libs.mvvm.ui.fragment.two;/*
  * #                                                   #
  */
 
-import androidx.databinding.library.baseAdapters.BR;
-import androidx.navigation.Navigation;
+import androidx.annotation.NonNull;
 
-import com.wave.libs.mvvmlibs.UIFragment;
-import com.wave.libs.mvvmlibs.annotations.UI;
+import com.wave.libs.mvvmlibs.adapter.SimpleArrayAdapter;
 
+import org.wave.libs.mvvm.beans.User;
 import org.wave.libs.mvvm.ui.R;
-import org.wave.libs.mvvm.ui.databinding.FragmentTwoBinding;
+import org.wave.libs.mvvm.ui.databinding.ItemTrheeUserBinding;
 
 /**
  * Copyright (C), 2015-2021, 深圳云集智能信息有限公司
  *
- * @fileName: TwoFragment
+ * @fileName: ThreeUserAdapter
  * @auther: Wave
- * @data: 2021/4/25 6:24 PM
+ * @data: 2021/4/25 8:25 PM
  * @description:
  * @history: <author> <time> <version> <desc>
  */
-@UI(layout = R.layout.fragment_two,vmId = BR.vmTwo)
-public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> implements OnTwoListener{
+public class ThreeUserAdapter extends SimpleArrayAdapter<User, ItemTrheeUserBinding> {
 
     @Override
-    public void onCreateViewAfter() {
-        getUI().getViewModel().setListener(this);
-        of();
+    public int layoutId() {
+        return R.layout.item_trhee_user;
     }
 
     @Override
-    public void onBackClick() {
-        Navigation.findNavController(getView()).navigateUp();
+    public void onBindViewHolder(@NonNull ViewDataBindingViewHolder<ItemTrheeUserBinding> holder, int position) {
+        holder.getBinding().setUser(getValues().get(position));
     }
 
-    @Override
-    public void onNextClick() {
-        Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
+    public void setListener(){
+
     }
 
-    void of(){
-        if(this.getArguments() == null)return;
-        getUI().getViewModel().setUser(TwoFragmentArgs.fromBundle(this.getArguments()).getUser());
+    public void add(){
+        User user = new User("第"+this.values.size()+"人","","");
+        this.values.add(user);
+        notifyItemInserted(this.values.size());
     }
+
 }

@@ -27,6 +27,18 @@
             app:nullable="true"
             android:defaultValue="@null"
             />
+        <action
+            android:id="@+id/action_twoFragment_to_threeFragment"
+            app:destination="@id/threeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="org.wave.libs.mvvm.ui.fragment.three.ThreeFragment"
+        android:label="TwoFragment"
+        tools:layout="@layout/fragment_three"
+        >
 
     </fragment>
 

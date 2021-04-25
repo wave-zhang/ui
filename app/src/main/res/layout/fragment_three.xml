@@ -2,8 +2,8 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="vmTwo"
-            type="org.wave.libs.mvvm.ui.fragment.two.TwoViewModel" />
+            name="vmThree"
+            type="org.wave.libs.mvvm.ui.fragment.three.ThreeViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,16 +12,14 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_marginTop="20dp"
+            android:id="@+id/v_back"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
             android:text="返回上一页"
-            android:onClick="@{()->vmTwo.listenerLiveData.onBackClick()}"
+            android:onClick="@{()->vmThree.listenerLiveData.onBackClick()}"
             />
 
         <Button
@@ -31,25 +29,21 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:layout_marginEnd="20dp"
-            android:text="下一页"
-            android:onClick="@{()->vmTwo.listenerLiveData.onNextClick()}"
+            android:text="添加一条数据"
+            android:onClick="@{()->vmThree.listenerLiveData.onAddUserClick()}"
             />
 
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@id/v_back"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:userValue="@{vmTwo.userLiveData}"
-            android:textColor="#ff222222"
-            android:textSize="17sp"
-            android:gravity="center"
-            tools:text="@string/app_name"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:adapter="@{vmThree.userAdapterLiveData}"
             />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

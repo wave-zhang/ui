@@ -43,6 +43,29 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //核心必须依赖
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
+    //经典刷新头
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
+    //经典加载
+    implementation 'com.scwang.smart:refresh-footer-classics:2.0.1'
+
+    // OkHttp3
+    api "com.squareup.okhttp3:okhttp:4.9.0"
+    api "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    api "com.squareup.okhttp3:mockwebserver:4.9.0"
+    // Retrofit2
+    api "com.squareup.retrofit2:retrofit:2.9.0"
+    api "com.squareup.retrofit2:converter-gson:2.9.0"
+    api "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    // RxJava 3 + RxAndroid
+    api "io.reactivex.rxjava3:rxandroid:3.0.0"
+    api "io.reactivex.rxjava3:rxjava:3.0.0"
+    // AutoDispose 2
+    api "com.uber.autodispose2:autodispose:2.0.0"
+    api "com.uber.autodispose2:autodispose-android:2.0.0"
+    api "com.uber.autodispose2:autodispose-lifecycle:2.0.0"
+    api "com.uber.autodispose2:autodispose-androidx-lifecycle:2.0.0"
     // MvvM + UI
     //implementation 'com.github.wave-zhang:ui:v1.0.0'
     implementation project(":core:mvvmlibs")

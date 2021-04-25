@@ -39,4 +39,7 @@ import com.wave.libs.mvvmlibs.listener.OnMvvmListener;
 public interface OnBackListener extends OnMvvmListener {
 
     void onBackClick();
+
+
+
 }

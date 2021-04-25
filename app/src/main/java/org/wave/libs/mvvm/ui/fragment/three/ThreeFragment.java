@@ -1,4 +1,4 @@
-package org.wave.libs.mvvm.ui.fragment.two;/*
+package org.wave.libs.mvvm.ui.fragment.three;/*
  * Copyright (c) 2021, zhanglang0739@gmail.com All Rights Reserved.
  * #                                                   #
  * #                       _oo0oo_                     #
@@ -32,24 +32,25 @@ import com.wave.libs.mvvmlibs.UIFragment;
 import com.wave.libs.mvvmlibs.annotations.UI;
 
 import org.wave.libs.mvvm.ui.R;
-import org.wave.libs.mvvm.ui.databinding.FragmentTwoBinding;
+import org.wave.libs.mvvm.ui.adapter.ThreeUserAdapter;
+import org.wave.libs.mvvm.ui.databinding.FragmentThreeBinding;
 
 /**
  * Copyright (C), 2015-2021, 深圳云集智能信息有限公司
  *
- * @fileName: TwoFragment
+ * @fileName: ThreeFragment
  * @auther: Wave
- * @data: 2021/4/25 6:24 PM
+ * @data: 2021/4/25 8:17 PM
  * @description:
  * @history: <author> <time> <version> <desc>
  */
-@UI(layout = R.layout.fragment_two,vmId = BR.vmTwo)
-public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> implements OnTwoListener{
+@UI(layout = R.layout.fragment_three,vmId = BR.vmThree)
+public class ThreeFragment extends UIFragment<ThreeViewModel, FragmentThreeBinding> implements OnThreeListener{
 
     @Override
     public void onCreateViewAfter() {
         getUI().getViewModel().setListener(this);
-        of();
+        onCreateViews();
     }
 
     @Override
@@ -58,12 +59,14 @@ public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> im
     }
 
     @Override
-    public void onNextClick() {
-        Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
+    public void onAddUserClick() {
+        //getUI().getViewModel().userAdapterLiveData.getValue().add();
+        getUI().getViewModel().getAdapter().add();
     }
 
-    void of(){
-        if(this.getArguments() == null)return;
-        getUI().getViewModel().setUser(TwoFragmentArgs.fromBundle(this.getArguments()).getUser());
+    void onCreateViews(){
+        ThreeUserAdapter adapter = new ThreeUserAdapter();
+        //adapter.setListener();
+        getUI().getViewModel().setAdapter(adapter);
     }
 }
