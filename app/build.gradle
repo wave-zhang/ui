@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -43,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // MvvM + UI
-    //implementation 'com.github.wave-zhang:ui:v1.0.5'
+    //implementation 'com.github.wave-zhang:ui:v1.0.0'
     implementation project(":core:mvvmlibs")
 }
 

@@ -3,20 +3,56 @@
     <data>
         <variable
             name="vmHome"
-            type="org.wave.libs.mvvm.ui.fragment.HomeViewModel" />
+            type="org.wave.libs.mvvm.ui.fragment.home.HomeViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/v_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="Home Fragment !!! "
+            android:text="@{@string/number(vmHome.numberLiveData)}"
+            />
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@+id/v_number"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="点击试试"
+            android:onClick="@{()->vmHome.listenerLiveData.onAddNumberClick()}"
+            />
+
+        <Button
+            android:id="@+id/v_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/v_next_1"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="下一页(无参)"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{()->vmHome.listenerLiveData.onNextPageClick()}"
+            />
+
+        <Button
+            android:id="@+id/v_next_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="下一页(有参)"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{()->vmHome.listenerLiveData.onNextPage2Click()}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

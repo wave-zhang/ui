@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragment"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="org.wave.libs.mvvm.ui.fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:name="org.wave.libs.mvvm.ui.fragment.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"
+        >
+        <action
+            android:id="@+id/action_homeFragment_to_twoFragment"
+            app:destination="@id/twoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="org.wave.libs.mvvm.ui.fragment.two.TwoFragment"
+        android:label="TwoFragment"
+        tools:layout="@layout/fragment_two"
+        >
+        <argument
+            android:name="user"
+            app:argType="org.wave.libs.mvvm.beans.User"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+
+    </fragment>
+
+
 </navigation>

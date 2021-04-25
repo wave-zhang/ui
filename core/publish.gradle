@@ -10,8 +10,8 @@ task androidSourcesJar(type: Jar) {
 }
 
 ext {
-    PUBLISH_GROUP_ID = 'ui'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_GROUP_ID = 'com.github.wave-zhang'
+    PUBLISH_VERSION = '0.0.1'
 }
 // 刚才获取的秘钥后8位
 ext["signing.keyId"] = ''
@@ -94,9 +94,12 @@ publishing {
             // This is an arbitrary name, you may also use "mavencentral" or
             // any other name that's descriptive for you
             name = "mavencentral"
-
-            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            // 旧的oss地址 默认账号是没有权限使用
+            //def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            //def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            //
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             // You only need this if you want to publish snapshots, otherwise just set the URL
             // to the release repo directly
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl

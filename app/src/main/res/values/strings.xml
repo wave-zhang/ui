@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">UI</string>
+    <string name="number">我被点击了%d次</string>
+    <string name="two_page_no_param">您使用了无参跳转,当前无用户信息,</string>
+    <string name="two_page_param">您使用有参跳转,当前用户信息为:%s</string>
 </resources>

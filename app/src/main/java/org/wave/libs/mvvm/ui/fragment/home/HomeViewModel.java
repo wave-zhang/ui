@@ -1,4 +1,4 @@
-package org.wave.libs.mvvm.ui.fragment;/*
+package org.wave.libs.mvvm.ui.fragment.home;/*
  * Copyright (c) 2021, zhanglang0739@gmail.com All Rights Reserved.
  * #                                                   #
  * #                       _oo0oo_                     #
@@ -25,18 +25,25 @@ package org.wave.libs.mvvm.ui.fragment;/*
  * #                                                   #
  */
 
-import com.wave.libs.mvvmlibs.listener.OnMvvmListener;
+import androidx.lifecycle.MutableLiveData;
+
+import com.wave.libs.mvvmlibs.MVVMViewModel;
 
 /**
  * Copyright (C), 2015-2021, 深圳云集智能信息有限公司
  *
- * @fileName: OnHomeListener
+ * @fileName: HomeViewModel
  * @auther: Wave
  * @data: 2021/3/22 2:24 PM
  * @description:
  * @history: <author> <time> <version> <desc>
  */
-public interface OnHomeListener extends OnMvvmListener {
+public class HomeViewModel extends MVVMViewModel<OnHomeListener> {
 
-    void onHomeClick();
+    public MutableLiveData<Integer> numberLiveData = new MutableLiveData<>(0);
+
+    public void addNumber(){
+        int count = (numberLiveData.getValue() == null ? 0 : numberLiveData.getValue()) + 1;
+        numberLiveData.setValue(count);
+    }
 }

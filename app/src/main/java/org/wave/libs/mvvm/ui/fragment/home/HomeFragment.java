@@ -1,4 +1,4 @@
-package org.wave.libs.mvvm.ui.fragment;/*
+package org.wave.libs.mvvm.ui.fragment.home;/*
  * Copyright (c) 2021, zhanglang0739@gmail.com All Rights Reserved.
  * #                                                   #
  * #                       _oo0oo_                     #
@@ -26,10 +26,13 @@ package org.wave.libs.mvvm.ui.fragment;/*
  */
 
 import androidx.databinding.library.baseAdapters.BR;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.wave.libs.mvvmlibs.UIFragment;
 import com.wave.libs.mvvmlibs.annotations.UI;
 
+import org.wave.libs.mvvm.beans.User;
 import org.wave.libs.mvvm.ui.R;
 import org.wave.libs.mvvm.ui.databinding.FragmentHomeBinding;
 
@@ -43,10 +46,35 @@ import org.wave.libs.mvvm.ui.databinding.FragmentHomeBinding;
  * @history: <author> <time> <version> <desc>
  */
 @UI(layout = R.layout.fragment_home,vmId = BR.vmHome)
-public class HomeFragment extends UIFragment<HomeViewModel, FragmentHomeBinding> {
+public class HomeFragment extends UIFragment<HomeViewModel, FragmentHomeBinding> implements OnHomeListener{
 
     @Override
     public void onCreateViewAfter() {
+        // 绑定UI界面的点击事件
+        getUI().getViewModel().setListener(this);
+    }
 
+    @Override
+    public void onAddNumberClick() {
+        getUI().getViewModel().addNumber();
+    }
+
+    @Override
+    public void onNextPageClick() {
+        if(this.getView() == null)return;
+        nav().navigate(R.id.action_homeFragment_to_twoFragment);
+    }
+
+    @Override
+    public void onNextPage2Click() {
+        if(this.getView() == null)return;
+        User user = new User("小明同学","18","7527");
+        HomeFragmentDirections.ActionHomeFragmentToTwoFragment actionHomeFragmentToTwoFragment = HomeFragmentDirections.actionHomeFragmentToTwoFragment();
+        actionHomeFragmentToTwoFragment.setUser(user);
+        nav().navigate(actionHomeFragmentToTwoFragment);
+    }
+
+    NavController nav(){
+        return Navigation.findNavController(this.getView());
     }
 }
