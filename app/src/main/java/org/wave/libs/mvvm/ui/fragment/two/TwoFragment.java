@@ -66,14 +66,12 @@ public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> im
 
     @Override
     public void onNextClick() {
-        //Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
-        NumberMutableLiveData.getInstance().numberLiveData.postValue(123);
+        //NumberMutableLiveData.getInstance().numberLiveData.setValue(9000);
+        Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
     }
 
     void of(){
         if(this.getArguments() == null)return;
-        NumberMutableLiveData.getInstance().numberLiveData.setValue(9000);
         getUI().getViewModel().setUser(TwoFragmentArgs.fromBundle(this.getArguments()).getUser());
-        NumberMutableLiveData.getInstance().numberLiveData.setValue(9001);
     }
 }
