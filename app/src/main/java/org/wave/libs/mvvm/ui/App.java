@@ -1,4 +1,4 @@
-package org.wave.libs.mvvm.ui.fragment.two;/*
+package org.wave.libs.mvvm.ui;/*
  * Copyright (c) 2021, zhanglang0739@gmail.com All Rights Reserved.
  * #                                                   #
  * #                       _oo0oo_                     #
@@ -25,55 +25,24 @@ package org.wave.libs.mvvm.ui.fragment.two;/*
  * #                                                   #
  */
 
-import androidx.databinding.library.baseAdapters.BR;
-import androidx.navigation.Navigation;
+import android.app.Application;
 
-import com.wave.libs.mvvmlibs.UIFragment;
-import com.wave.libs.mvvmlibs.annotations.UI;
 import com.wave.libs.mvvmlibs.utils.ZLog;
-
-import org.wave.libs.mvvm.beans.AccountLiveData;
-import org.wave.libs.mvvm.ui.R;
-import org.wave.libs.mvvm.ui.databinding.FragmentTwoBinding;
 
 /**
  * Copyright (C), 2015-2021, 深圳云集智能信息有限公司
  *
- * @fileName: TwoFragment
+ * @fileName: App
  * @auther: Wave
- * @data: 2021/4/25 6:24 PM
+ * @data: 2021/4/26 6:43 PM
  * @description:
  * @history: <author> <time> <version> <desc>
  */
-@UI(layout = R.layout.fragment_two,vmId = BR.vmTwo)
-public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> implements OnTwoListener{
+public class App extends Application {
 
     @Override
-    public void onCreateViewAfter() {
-        getUI().getViewModel().setListener(this);
-        AccountLiveData.getInstance().numberLiveData.observe(this.getViewLifecycleOwner(),this::onNumberValueChanged);
-        of();
-    }
-
-    void onNumberValueChanged(Integer number){
-        ZLog.d("TwoFragment onNumberValueChanged = "+number);
-    }
-
-    @Override
-    public void onBackClick() {
-        Navigation.findNavController(getView()).navigateUp();
-    }
-
-    @Override
-    public void onNextClick() {
-        //Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
-        AccountLiveData.getInstance().numberLiveData.postValue(123);
-    }
-
-    void of(){
-        if(this.getArguments() == null)return;
-        AccountLiveData.getInstance().numberLiveData.setValue(9000);
-        getUI().getViewModel().setUser(TwoFragmentArgs.fromBundle(this.getArguments()).getUser());
-        AccountLiveData.getInstance().numberLiveData.setValue(9001);
+    public void onCreate() {
+        super.onCreate();
+        ZLog.create(true);
     }
 }
