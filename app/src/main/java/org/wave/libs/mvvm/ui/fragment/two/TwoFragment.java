@@ -32,7 +32,7 @@ import com.wave.libs.mvvmlibs.UIFragment;
 import com.wave.libs.mvvmlibs.annotations.UI;
 import com.wave.libs.mvvmlibs.utils.ZLog;
 
-import org.wave.libs.mvvm.beans.AccountLiveData;
+import org.wave.libs.mvvm.beans.NumberMutableLiveData;
 import org.wave.libs.mvvm.ui.R;
 import org.wave.libs.mvvm.ui.databinding.FragmentTwoBinding;
 
@@ -51,7 +51,7 @@ public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> im
     @Override
     public void onCreateViewAfter() {
         getUI().getViewModel().setListener(this);
-        AccountLiveData.getInstance().numberLiveData.observe(this.getViewLifecycleOwner(),this::onNumberValueChanged);
+        NumberMutableLiveData.getInstance().numberLiveData.observe(this.getViewLifecycleOwner(),this::onNumberValueChanged);
         of();
     }
 
@@ -67,13 +67,13 @@ public class TwoFragment extends UIFragment<TwoViewModel, FragmentTwoBinding> im
     @Override
     public void onNextClick() {
         //Navigation.findNavController(getView()).navigate(R.id.action_twoFragment_to_threeFragment);
-        AccountLiveData.getInstance().numberLiveData.postValue(123);
+        NumberMutableLiveData.getInstance().numberLiveData.postValue(123);
     }
 
     void of(){
         if(this.getArguments() == null)return;
-        AccountLiveData.getInstance().numberLiveData.setValue(9000);
+        NumberMutableLiveData.getInstance().numberLiveData.setValue(9000);
         getUI().getViewModel().setUser(TwoFragmentArgs.fromBundle(this.getArguments()).getUser());
-        AccountLiveData.getInstance().numberLiveData.setValue(9001);
+        NumberMutableLiveData.getInstance().numberLiveData.setValue(9001);
     }
 }

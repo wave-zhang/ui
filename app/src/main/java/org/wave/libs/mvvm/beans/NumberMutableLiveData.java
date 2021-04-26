@@ -36,21 +36,21 @@ import androidx.lifecycle.MutableLiveData;
  * @description:
  * @history: <author> <time> <version> <desc>
  */
-public class AccountLiveData {
+public class NumberMutableLiveData {
     /**
      * 将这个Number进行全局共享
      */
     public MutableLiveData<Integer> numberLiveData = new MutableLiveData<>();
 
-    AccountLiveData(){};
+    NumberMutableLiveData(){};
 
-    static AccountLiveData accountLiveData;
+    static NumberMutableLiveData numberMutableLiveData;
 
     /**
      * 简单一个单例
      * @return
      */
-    public static AccountLiveData getInstance(){
-        return accountLiveData == null ? accountLiveData = new AccountLiveData() : accountLiveData;
+    public static NumberMutableLiveData getInstance(){
+        return numberMutableLiveData == null ? numberMutableLiveData = new NumberMutableLiveData() : numberMutableLiveData;
     }
 }

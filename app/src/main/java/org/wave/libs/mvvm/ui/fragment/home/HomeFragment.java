@@ -33,7 +33,7 @@ import com.wave.libs.mvvmlibs.UIFragment;
 import com.wave.libs.mvvmlibs.annotations.UI;
 import com.wave.libs.mvvmlibs.utils.ZLog;
 
-import org.wave.libs.mvvm.beans.AccountLiveData;
+import org.wave.libs.mvvm.beans.NumberMutableLiveData;
 import org.wave.libs.mvvm.beans.User;
 import org.wave.libs.mvvm.ui.R;
 import org.wave.libs.mvvm.ui.databinding.FragmentHomeBinding;
@@ -65,7 +65,7 @@ public class HomeFragment extends UIFragment<HomeViewModel, FragmentHomeBinding>
     void onNumberValueChanged(Integer number){
         ZLog.d("onNumberValueChanged = "+number);
         // 赋值给全局numberLiveData变量
-        AccountLiveData.getInstance().numberLiveData.setValue(number);
+        NumberMutableLiveData.getInstance().numberLiveData.setValue(number);
     }
 
     @Override
